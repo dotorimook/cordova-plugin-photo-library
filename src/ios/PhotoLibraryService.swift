@@ -214,18 +214,18 @@ final class PhotoLibraryService {
             let asset = obj as! PHAsset
 
             if(mediaType == "image") {
-//                PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
-//                    (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
-//
-//                    if(imageData == nil) {
-//                        completion(nil)
-//                    }
-//                    else {
-//                        let file_url:URL = info!["PHImageFileURLKey"] as! URL
-////                        let mime_type = self.mimeTypes[file_url.pathExtension.lowercased()]!
-//                        completion(file_url.relativePath)
-//                    }
-//                }
+               PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
+                   (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
+
+                   if(imageData == nil) {
+                       completion(nil)
+                   }
+                   else {
+                       let file_url:URL = info!["PHImageFileURLKey"] as! URL
+//                        let mime_type = self.mimeTypes[file_url.pathExtension.lowercased()]!
+                       completion(file_url.relativePath)
+                   }
+               }
             }
             else if(mediaType == "video") {
 
@@ -356,18 +356,18 @@ final class PhotoLibraryService {
 
             let asset = obj as! PHAsset
 
-//            PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
-//                (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
-//
-//                guard let image = imageData != nil ? UIImage(data: imageData!) : nil else {
-//                    completion(nil)
-//                    return
-//                }
-//
-//                let imageData = PhotoLibraryService.image2PictureData(image, quality: 1.0)
-//
-//                completion(imageData)
-//            }
+           PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
+               (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
+
+               guard let image = imageData != nil ? UIImage(data: imageData!) : nil else {
+                   completion(nil)
+                   return
+               }
+
+               let imageData = PhotoLibraryService.image2PictureData(image, quality: 1.0)
+
+               completion(imageData)
+           }
         })
     }
 
@@ -388,18 +388,18 @@ final class PhotoLibraryService {
             let mediaType = mimeType.components(separatedBy: "/")[0]
 
             if(mediaType == "image") {
-//                PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
-//                    (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
-//
-//                    if(imageData == nil) {
-//                        completion(nil)
-//                    }
-//                    else {
-////                        let file_url:URL = info!["PHImageFileURLKey"] as! URL
-////                        let mime_type = self.mimeTypes[file_url.pathExtension.lowercased()]
-//                        completion(imageData!.base64EncodedString())
-//                    }
-//                }
+               PHImageManager.default().requestImageData(for: asset, options: self.imageRequestOptions) {
+                   (imageData: Data?, dataUTI: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) in
+
+                   if(imageData == nil) {
+                       completion(nil)
+                   }
+                   else {
+//                        let file_url:URL = info!["PHImageFileURLKey"] as! URL
+//                        let mime_type = self.mimeTypes[file_url.pathExtension.lowercased()]
+                       completion(imageData!.base64EncodedString())
+                   }
+               }
             }
             else if(mediaType == "video") {
 
